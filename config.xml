@@ -25,5 +25,3 @@
         <allow-intent href="itms-apps:*" />
     </platform>
 </widget>
-keytool -genkey -v -keystore 4glive.jks
--keyalg RSA -keysize 2048 -validity 10000 -alias 4glive.com.br
