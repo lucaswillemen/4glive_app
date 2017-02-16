@@ -30,10 +30,12 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
     })
     $scope.$on('$viewContentLoaded', function() {
         $("#btnNovo").click(function() {
-            $('#form')[0].reset()
-                        $scope.complete=false
         })
         $('#modalCadastrar').on('hide.bs.modal', function(e) {
+            $scope.complete=false
+            $scope.overlay = false
+            $scope.$apply()
+            $('#form')[0].reset()
             $("#form").data('formValidation').resetForm();
         })
         $('#form').formValidation({
@@ -46,20 +48,6 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
             row: {
                 valid: 'has-success',
                 invalid: 'has-error'
-            },
-            fields: {
-                'celular': {
-                    validators: {
-                        notEmpty: {
-                            message: 'Informe o celular'
-                        },
-
-                        regexp: {
-                            regexp: /^\([1-9]{2}\) [2-9][0-9]{3,4}\-[0-9]{4}$/,
-                            message: 'Informe um número de celular válido'
-                        }
-                    }
-                }
             }
         }).on('success.form.fv', function(e) {
             e.preventDefault();
@@ -89,6 +77,7 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
                         method: 'jsonp',
                         url: window.api + "api/ssh/cadastro.php?callback=JSON_CALLBACK&token=" + res.token + "&email=" + res.email
                     }).success(function(res) {
+                        $scope.overlay = false
                         $scope.res
                         data.row.vencimento = res.vencimento
                         $('#datatable').DataTable().row.add(data.row).draw()

@@ -55,25 +55,37 @@
                     </div>
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Nome:</label>
-                        <input class="form-control" name="data[nome]" ng-model="data.nome" id="tx_nome" required>
+                        <input class="form-control" name="nome" ng-model="data.nome" required>
                     </div>
 
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Email:</label>
-                        <input class="form-control" name="data[email]" ng-model="data.email" id="txt_host" required>
+                        <input type="email" class="form-control" name="email" ng-model="data.email" required>
                     </div>
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Celular:</label>
-                        <input class="form-control" name="celular" ng-model="data.telefone" id="txt_user" required >
+                        <input class="form-control" name="celular" ng-model="data.telefone" required >
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" ng-show="overlay">
+                    <h3  class="text-center">Criando conta</h3>
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="bounce-loader">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" ng-hide="overlay">
                     <input type="submit" id="btnCadastrarEmpresa" value="Cadastrar" class="btn btn-primary" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </form>
             <div class="modal-body" ng-show="complete">
-                <div class="panel panel-featured-left panel-featured-quartenary">
+                <div class="panel panel-featured-left panel-featured-quartenary" style="margin-bottom: 0px;">
                     <div class="panel-body">
                         <div class="widget-summary">
                             <div class="widget-summary-col widget-summary-col-icon">
