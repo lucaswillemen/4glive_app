@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="fixed">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4G Live - Sistema</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="icon" href="../assets/images/favicon.png">
+
+
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://4glive.com.br/assets/imges/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:site_name" content="4G Live - Sistema">
+    <meta property="og:title" content="4G Live - Sistema" />
+    <meta property="og:description" content="Internet 4G sem franquia para todo Brasil" />
+    <meta property="og:url" content="https://4glive.com.br/" />
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/datepicker.css" />
+    <link rel="stylesheet" href="assets/css/datatable.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/select2.css" />
+    <script src="assets/js/modernizr.js"></script>
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+
+    <style type="text/css">
+    body{padding-right: 0px !important;}
+        a {
+            cursor: pointer
+        }
+        
+        .has-feedback .form-control-feedback {
+            right: 15px;
+            top: 10px;
+        }
+        
+        .has-feedback label~.form-control-feedback {
+            top: 36px;
+            right: 0px;
+        }
+        .col-md-12 label~.form-control-feedback, .col-md-6 label~.form-control-feedback {
+            top: 36px;
+            right: 15px !important;
+        }
+    </style>
+    <script type="text/javascript">
+        window.version = "000.1"
+        if (window.location.href.split("/")[2] == "localhost") {
+            window.domain = "http://vectorgray.com.br/api/"
+            window.ws = "https://localhost:3000"
+            window.config_base = {
+                "facebook_id": '836611273093285',
+                "analytcs_id": 'UA-90963924-1',
+                "facebook_pixel": '1087283108045883'
+            }
+        } else {
+            window.domain = "http://vectorgray.com.br/api/"
+            window.ws = "https://vpad.com.br:3000"
+            window.config_base = {
+                "facebook_id": '409764189359025',
+                "analytcs_id": 'UA-90963924-1',
+                "facebook_pixel": '1087283108045883'
+            }
+        };
+    </script>
+    <!--Angular -->
+    <script src="angular/angular.min.js"></script>
+    <script src="angular/angular-messages.js"></script>
+    <script src="angular/angular-router.js"></script>
+    <script src="angular/angular-mask.js"></script>
+    <script src="angular/angular-storage.js"></script>
+
+    <!--Controller-->
+    <script src="controller/app.js"></script>
+    <script src="controller/state.js"></script>
+    <script src="controller/menu.js"></script>
+    <script src="controller/home.js"></script>
+
+    <script src="controller/register.js"></script>
+    <script src="controller/login.js"></script>
+    <script src="controller/add.js"></script>
+    <script src="controller/fatura.js"></script>
+    <script src="controller/extrato.js"></script>
+    <script src="controller/indicados.js"></script>
+    <script src="controller/revenda.js"></script>
+
+<script>
+
+//Analytcs
+if (window.location.href.split("/")[2] != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', window.config_base.analytcs_id, 'auto');
+    ga('send', 'pageview');
+
+}
+
+//Facebook SDK JS
+window.fbAsyncInit = function() {
+  FB.init({
+      appId: window.config_base.facebook_id,
+      xfbml: true,
+      version: 'v2.8'
+  });
+};
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {
+      return;
+  }
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+//Facebook PIXEL
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', window.config_base.facebook_pixel); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+</head>
+
+<body ng-app="StartApp" ng-controller="Main">
+    <ng-view ui-view="header"></ng-view>
+    <ng-view ui-view="menu"></ng-view>
+    <ng-view ui-view="root"></ng-view>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/validator.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script src="assets/js/datatable.js"></script>
+    <script src="assets/js/select2.js"></script>
+
+</body>
+
+</html>

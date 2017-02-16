@@ -1,0 +1,153 @@
+<div class="inner-wrapper">
+    <section role="main" class="content-body">
+        <header class="page-header">
+            <h2>Home</h2>
+            <div class="right-wrapper pull-right">
+                <ol class="breadcrumbs">
+                    <li>
+                        <a ui-sref="app.home">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </li>
+                </ol>
+                <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+            </div>
+        </header>
+        <div class="row">            
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div class="row">
+                    <div class="col-md-12 col-lg-6 col-xl-6">
+                        <section class="panel panel-featured-left panel-featured-primary">
+                            <div class="panel-body">
+                                <div class="widget-summary">
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-primary">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                    </div>
+                                    <div class="widget-summary-col">
+                                        <div class="summary">
+                                            <h4 class="title">Validade</h4>
+                                            <div class="info">
+                                                <strong class="amount">{{data.vencimento | date: 'dd/MM/yyyy'}}</strong>
+                                            </div>
+                                            <strong class="">{{data.vencimento > today ? 'Ativado' : 'Bloqueado'}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-6">
+                        <section class="panel panel-featured-left panel-featured-quartenary">
+                            <div class="panel-body">
+                                <div class="widget-summary">
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-quartenary">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="widget-summary-col">
+                                        <div class="summary">
+                                            <h4 class="title">Dados de conexão</h4>
+                                            <div class="info">
+                                                <strong class="amount">{{data.email}}</strong>
+                                            </div>
+                                                <strong class="">Senha: {{data.senha_con}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-6" ui-sref="app.add" style="cursor: pointer">
+                        <section class="panel panel-featured-left panel-featured-secondary">
+                            <div class="panel-body">
+                                <div class="widget-summary">
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-secondary">
+                                            <i class="fa fa-usd"></i>
+                                        </div>
+                                    </div>
+                                    <div class="widget-summary-col">
+                                        <div class="summary">
+                                            <h4 class="title">Adicione pacotes</h4>
+                                            <div class="info">
+                                                <strong class="amount">Comprar aqui!</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-6">
+                        <section class="panel panel-featured-left panel-featured-tertiary">
+                            <div class="panel-body">
+                                <div class="widget-summary">
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-tertiary">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="widget-summary-col">
+                                        <div class="summary">
+                                            <h4 class="title">Enviar comprovante</h4>
+                                            <div class="info">
+                                                <strong class="amount">Confirmar deposito</strong>
+                                            </div>
+                                                <strong class="">O seu comprovante irá passar por análise</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-6">
+                        <section class="panel panel-featured-left panel-featured-tertiary">
+                            <div class="panel-body">
+                                <div class="widget-summary">
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-primary">
+                                            <i class="fa fa-cog"></i>
+                                        </div>
+                                    </div>
+                                    <div class="widget-summary-col">
+                                        <div class="summary">
+                                            <h4 class="title">Configuração</h4>
+                                            <div class="info">
+                                                <strong class="amount">Aprenda a instalar</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-6">
+                        <section class="panel panel-featured-left panel-featured-tertiary">
+                            <div class="panel-body">
+                                <div class="widget-summary">
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-secondary">
+                                            <i class="fa fa-server"></i>
+                                        </div>
+                                    </div>
+                                    <div class="widget-summary-col">
+                                        <div class="summary">
+                                            <h4 class="title">Servidores</h4>
+                                            <div class="info">
+                                                <strong class="amount">Baixe o arquivo</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
