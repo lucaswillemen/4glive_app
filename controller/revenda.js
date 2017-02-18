@@ -1,4 +1,6 @@
 app.controller('revenda', function($scope, $rootScope, $state, $http) {
+
+    //Load data home
     $http({
         method: 'jsonp',
         url: window.api + "api/home.php?callback=JSON_CALLBACK&token="+localStorage.security_token        
@@ -7,20 +9,26 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
         $scope.revenda_link = "https://4glive.com.br/app/#/indicador/"+$scope.data.email
         console.log($scope.data)
     })
+
+    //Load pacotes
     $http({
         method: 'jsonp',
         url: window.api + "api/pacotes.php?callback=JSON_CALLBACK"        
     }).success(function(data) {
         $scope.pacotes = data.data
         console.log(data.data)
-        $("#ativar_nome").select2({
+        $("#ativar_pacote").select2({
             placeholder: 'Selecione um pacote',
             allowClear: true,
             theme: "bootstrap",
             data: $scope.pacotes,
             width: '100%'
+        }).change(function(e) {
+            $('#formAtivar').formValidation('revalidateField', 'ativar_pacote');
         })
     })
+
+    //Load indicados
     $http({
         method: 'jsonp',
         url: window.api + "api/indicados.php?callback=JSON_CALLBACK&id=" + localStorage.uid        
@@ -33,9 +41,13 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
             theme: "bootstrap",
             data: $scope.indicados,
             width: '100%'
+        }).change(function(e) {
+            $('#formAtivar').formValidation('revalidateField', 'ativar_email');
         })
     })
     $scope.$on('$viewContentLoaded', function() {
+
+        //Solicitar saque
         $("#btnSaque").click(function() {
             $('#formSaque')[0].reset()
         })
@@ -48,8 +60,7 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
             framework: 'bootstrap',
             icon: {
                 valid: 'fa fa-check',
-                invalid: 'fa fa-close',
-                validating: 'fa fa-refresh'
+                invalid: 'fa fa-close'
             },
             row: {
                 valid: 'has-success',
@@ -86,20 +97,21 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
         })
 
 
-
+        //Solicitar ativação
         $("#btnAtivar").click(function() {
             $('#formAtivar')[0].reset()
-                        $scope.complete=false
         })
         $('#modalAtivar').on('hide.bs.modal', function(e) {
             $("#formAtivar").data('formValidation').resetForm();
+            $scope.overlayAtivar = false
+            $scope.completeAtivar = false
+            $scope.$apply()
         })
         $('#formAtivar').formValidation({
             framework: 'bootstrap',
             icon: {
                 valid: 'fa fa-check',
-                invalid: 'fa fa-close',
-                validating: 'fa fa-refresh'
+                invalid: 'fa fa-close'
             },
             row: {
                 valid: 'has-success',
@@ -107,21 +119,31 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
             }
         }).on('success.form.fv', function(e) {
             e.preventDefault();
+            $scope.overlayAtivar = true
 
             var send = {
-                data: $scope.data,
-                action: "create"
+                pacote: $("#ativar_pacote").val(),
+                indicado: $("#ativar_email").val(),
+                token: localStorage.security_token
             }
-            send.data.indicador_id = localStorage.uid
-            send.data.senha = '123456'
 
             $http({
                 method: 'jsonp',
-                url: window.api + "api/cadastro.php?callback=JSON_CALLBACK",
+                url: window.api + "api/ssh/ativar.php?callback=JSON_CALLBACK",
                 params: send,
                 paramSerializer: '$httpParamSerializerJQLike'
             }).success(function(data, status, header, config) {
                 console.log(data);
+                if (data.status) {
+                    $scope.data_ativar = data
+                    $scope.completeAtivar = true
+                    $scope.FormAtivarStatus = false
+                    $scope.overlayAtivar = false
+                    $scope.data.saldo -= data.valor
+                }else{
+                    $scope.FormAtivarStatus = true
+                    $scope.overlayAtivar = false
+                }
             })
         })
     })

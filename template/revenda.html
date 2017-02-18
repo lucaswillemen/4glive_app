@@ -1,6 +1,6 @@
 <div class="inner-wrapper">
     <section role="main" class="content-body">
-   <header class="page-header">
+        <header class="page-header">
             <h2>Revenda</h2>
             <div class="right-wrapper pull-right">
                 <ol class="breadcrumbs">
@@ -14,12 +14,12 @@
                 <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
             </div>
         </header>
-        <div class="row">            
+        <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="row">
-                    <section class="panel col-md-12" >
+                    <section class="panel col-md-12">
                         <header class="panel-heading">
-            
+
                             <h2 class="panel-title">Link de indicação</h2>
                         </header>
                         <div class="panel-body">
@@ -28,11 +28,11 @@
                                     <div class="col-md-12">
                                         <input type="text" class="form-control" id="inputDefault" ng-model="revenda_link">
                                     </div>
-                                </div>            
+                                </div>
                             </form>
                         </div>
                     </section>
-                    
+
                     <div class="col-md-12 col-lg-4 col-xl-4" style="cursor: pointer">
                         <section class="panel panel-featured-left panel-featured-secondary">
                             <div class="panel-body">
@@ -177,23 +177,63 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Ativar cliente com saldo</h4>
             </div>
-            <form method="GET" action="" id="formAtivar" onsubmit="return false" ng-hide="complete">
+
+            <form id="formAtivar" onsubmit="return false" ng-hide="completeAtivar">
                 <div class="modal-body clearfix">
+
+                    <div class="alert alert-danger" ng-show="FormAtivarStatus">
+                        <strong>Saldo insuficiente.</strong> A ativação solicitada está acima do saldo creditado em sua conta, favor informar um valor abaixo de {{data.saldo | currency : 'R$ '}}.
+                    </div>
                     <div class="form-group">
                         <label>Pacote:</label>
-                        <input class="form-control select2" name="ativar_nome" ng-model="data_ativar.valor" id="ativar_nome" required>
+                        <input class="form-control select2" name="ativar_pacote" ng-model="data_ativar.pacote" id="ativar_pacote" required>
                     </div>
                     <div class="form-group">
                         <label>Cliente:</label>
-                        <input class="form-control select2" name="ativar_email" ng-model="data_ativar.valor" id="ativar_email" required>
+                        <input class="form-control select2" name="ativar_email" ng-model="data_ativar.cliente" id="ativar_email" required>
                     </div>
-                    {{data_ativar}}
                 </div>
-                <div class="modal-footer">
-                    <input type="submit" id="btnCadastrarEmpresa" value="Cadastrar" class="btn btn-primary" />
+                <div class="modal-footer" ng-hide="overlayAtivar">
+                    <input type="submit" value="Ativar" class="btn btn-primary" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
+                <div class="modal-footer" ng-show="overlayAtivar">
+                    <h3  class="text-center">Ativando conta</h3>
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="bounce-loader">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                </div>
             </form>
+            <div class="modal-body" ng-show="completeAtivar">
+                <div class="panel panel-featured-left panel-featured-quartenary">
+                    <div class="panel-body">
+                        <div class="widget-summary">
+                            <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-quartenary">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="widget-summary-col">
+                                <div class="summary">
+                                    <h4 class="title">Pacote ativado</h4>
+                                    <div class="info">
+                                        <strong class="amount ng-binding">Validade: {{data_ativar.vencimento | date: 'dd/MM/yyyy'}}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div class="modal-footer" ng-show="completeAtivar">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
         </div>
     </div>
 </div>
