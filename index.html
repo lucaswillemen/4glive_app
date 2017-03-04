@@ -101,7 +101,7 @@ if (window.location.href.split("/")[2] != "localhost") {
     ga('send', 'pageview');
 
 }
-
+if (location.pathname != "/android_asset/www/index.html") {
 //Facebook SDK JS
 window.fbAsyncInit = function() {
   FB.init({
@@ -131,6 +131,7 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', window.config_base.facebook_pixel); // Insert your pixel ID here.
 fbq('track', 'PageView');
+}
 </script>
 </head>
 
