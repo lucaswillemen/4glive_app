@@ -6,7 +6,7 @@ function open() {
     $("body").removeClass("loading-overlay-showing")
 }
 //App principal
-app.controller('Main', function($scope, $rootScope, $state, $http) {
+app.controller('Main', function($scope, $rootScope, $state, $http, $cordovaInAppBrowser) {
     $http({
         method: 'jsonp',
         url: window.api + "api/version.php?callback=JSON_CALLBACK"
