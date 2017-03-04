@@ -10,7 +10,7 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
         method: 'jsonp',
         url: window.api + "api/version.php?callback=JSON_CALLBACK"     
     }).success(function(data) {
-        if (data.v != window.version) {
+        if (data.v != window.version && location.pathname != "/android_asset/www/index.html") {
         	$("#modalAtualizar").modal("show")
         }
     })

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>4G Live - Sistema</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" href="../assets/images/favicon.png">
+    <link rel="icon" href="../assets/images/favicon.png">
 
 
     <meta property="og:locale" content="pt_BR" />
@@ -27,7 +27,10 @@
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
 
     <style type="text/css">
-    body{padding-right: 0px !important;}
+        body {
+            padding-right: 0px !important;
+        }
+        
         a {
             cursor: pointer
         }
@@ -41,7 +44,9 @@
             top: 36px;
             right: 0px;
         }
-        .col-md-12 label~.form-control-feedback, .col-md-6 label~.form-control-feedback {
+        
+        .col-md-12 label~.form-control-feedback,
+        .col-md-6 label~.form-control-feedback {
             top: 36px;
             right: 15px !important;
         }
@@ -88,61 +93,80 @@
     <script src="controller/indicados.js"></script>
     <script src="controller/revenda.js"></script>
 
-<script>
+    <script>
+        if (location.pathname != "/android_asset/www/index.html") {
+            //Analytcs
+            if (window.location.href.split("/")[2] != "localhost") {
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-//Analytcs
-if (window.location.href.split("/")[2] != "localhost") {
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                ga('create', window.config_base.analytcs_id, 'auto');
+                ga('send', 'pageview');
 
-    ga('create', window.config_base.analytcs_id, 'auto');
-    ga('send', 'pageview');
+            }
+            //Facebook SDK JS
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId: window.config_base.facebook_id,
+                    xfbml: true,
+                    version: 'v2.8'
+                });
+            };
 
-}
-if (location.pathname != "/android_asset/www/index.html") {
-//Facebook SDK JS
-window.fbAsyncInit = function() {
-  FB.init({
-      appId: window.config_base.facebook_id,
-      xfbml: true,
-      version: 'v2.8'
-  });
-};
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {
-      return;
-  }
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
 
 
-//Facebook PIXEL
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', window.config_base.facebook_pixel); // Insert your pixel ID here.
-fbq('track', 'PageView');
-}
-</script>
+            //Facebook PIXEL
+            ! function(f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function() {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window,
+                document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', window.config_base.facebook_pixel); // Insert your pixel ID here.
+            fbq('track', 'PageView');
+        }
+    </script>
 </head>
 
-<body ng-app="StartApp" ng-controller="Main" class="loading-overlay-showing" >
-<div class="loading-overlay">
-    <div class="bounce-loader">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
+<body ng-app="StartApp" ng-controller="Main" class="loading-overlay-showing">
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
     </div>
-</div>
     <ng-view ui-view="header"></ng-view>
     <ng-view ui-view="menu"></ng-view>
     <ng-view ui-view="root"></ng-view>
@@ -156,25 +180,25 @@ fbq('track', 'PageView');
     <script src="assets/js/moment.js"></script>
 
 
-<div id="modalAtualizar" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Versão do aplicativo desatualizada</h4>
-            </div>
-            <div class="modal-body">
-                <div class="alert alert-success">
-                    <strong>Ops!</strong> Clique no botão abaixo para atualizar seu APP
+    <div id="modalAtualizar" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Versão do aplicativo desatualizada</h4>
                 </div>
-                <button class="btn btn-primary btn-block" ng-click="open_link()">Ir para Google Play</button>
-            </div>    
-            
+                <div class="modal-body">
+                    <div class="alert alert-success">
+                        <strong>Ops!</strong> Clique no botão abaixo para atualizar seu APP
+                    </div>
+                    <button class="btn btn-primary btn-block" ng-click="open_link()">Ir para Google Play</button>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
 
-        <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
 </body>
 
 </html>
