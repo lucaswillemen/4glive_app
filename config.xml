@@ -8,7 +8,7 @@
         Mitz Tecnology
     </author>
     <icon src="assets/images/4glive_logo_app.png" />
-    <content src="index.html" />
+    <content src="index.html#/login" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
     <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
     <access origin="*" />
