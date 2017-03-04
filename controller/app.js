@@ -32,4 +32,7 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 		console.log("carregou")
 	    $("body").addClass("loading-overlay-showing")
 	})
+	$scope.open_link = function(){		
+        var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
+	}
 });

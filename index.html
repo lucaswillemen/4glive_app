@@ -69,7 +69,6 @@
                 "facebook_pixel": '1087283108045883'
             }
         };
-        var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
     </script>
     <!--Angular -->
     <script src="angular/angular.min.js"></script>
@@ -170,7 +169,7 @@ fbq('track', 'PageView');
                 <div class="alert alert-success">
                     <strong>Ops!</strong> Clique no botão abaixo para atualizar seu APP
                 </div>
-                <a class="btn btn-primary btn-block" href="market://details?id=glive.com.br" target="_blank">Ir para Google Play</a>
+                <button class="btn btn-primary btn-block" ng-click="open_link()">Ir para Google Play</button>>
             </div>    
             
         </div>
