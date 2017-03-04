@@ -22,6 +22,7 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 	$rootScope.$on('$stateChangeSuccess', 
 	function(event, toState, toParams, fromState, fromParams){ 
 	    $("html").removeClass("sidebar-left-opened")
+	     event.preventDefault();
 	})
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
