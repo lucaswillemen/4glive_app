@@ -33,7 +33,6 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 	    $("body").addClass("loading-overlay-showing")
 	})
 	$scope.open_link = function(){
-
         var ref = cordova.InAppBrowser.open('market://details?id=glive.com.br', '_system', 'location=yes');
 	}
 });
