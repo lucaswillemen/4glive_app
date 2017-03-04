@@ -1,6 +1,6 @@
 window.api = "https://4glive.com.br/app/"
 window.version = "0.5"
-var app = angular.module('StartApp', ['ngMessages','ui.router','ngStorage','ui.utils.masks']);
+var app = angular.module('StartApp', ['ngMessages','ui.router','ngStorage','ui.utils.masks', 'ngCordova']);
 function open (){
 	$("body").removeClass("loading-overlay-showing")
 }
@@ -33,6 +33,6 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 	    $("body").addClass("loading-overlay-showing")
 	})
 	$scope.open_link_update = function(){
-        //var ref = cordova.InAppBrowser.open('market://details?id=glive.com.br', '_system', 'location=yes');
+        $cordovaInAppBrowser.open('market://details?id=glive.com.br', '_system', 'location=yes');
 	}
 });
