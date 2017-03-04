@@ -1,23 +1,15 @@
 app.controller('revenda', function($scope, $rootScope, $state, $http) {
 
     //Load data home
-    $http({
-        method: 'jsonp',
-        url: window.api + "api/home.php?callback=JSON_CALLBACK&token="+localStorage.security_token        
-    }).success(function(data) {
-        $scope.data = data.data[0]
+    $http.jsonp(window.api + "api/home.php?token="+localStorage.security_token).then(function(res) {
+        $scope.data = res.data.data[0]
         $scope.revenda_link = "https://4glive.com.br/app/#/indicador/"+$scope.data.email
-        console.log($scope.data)
         open()
     })
 
     //Load pacotes
-    $http({
-        method: 'jsonp',
-        url: window.api + "api/pacotes.php?callback=JSON_CALLBACK"        
-    }).success(function(data) {
-        $scope.pacotes = data.data
-        console.log(data.data)
+    $http.jsonp(window.api + "api/pacotes.php").then(function(res) {
+        $scope.pacotes = res.data.data
         $("#ativar_pacote").select2({
             placeholder: 'Selecione um pacote',
             allowClear: true,
@@ -30,12 +22,8 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
     })
 
     //Load indicados
-    $http({
-        method: 'jsonp',
-        url: window.api + "api/indicados.php?callback=JSON_CALLBACK&id=" + localStorage.uid        
-    }).success(function(data) {
-        $scope.indicados = data.data
-        console.log(data.data)
+    $http.jsonp(window.api + "api/indicados.php?id=" + localStorage.uid).then(function(res) {
+        $scope.indicados = res.data.data
         $("#ativar_email").select2({
             placeholder: 'Selecione um cliente',
             allowClear: true,
@@ -81,7 +69,8 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
                 url: window.api + "api/saldo/solicitar_saque.php?callback=JSON_CALLBACK",
                 params: send,
                 paramSerializer: '$httpParamSerializerJQLike'
-            }).success(function(data, status, header, config) {
+            }).then(function(res, status, header, config) {
+                var data = res.data
                 if (data.status) {
                 	$scope.FormSaqueComplete = true
                 	$scope.FormSaqueStatus = data.status
@@ -130,10 +119,11 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
 
             $http({
                 method: 'jsonp',
-                url: window.api + "api/ssh/ativar.php?callback=JSON_CALLBACK",
+                url: window.api + "api/ssh/ativar.php",
                 params: send,
                 paramSerializer: '$httpParamSerializerJQLike'
-            }).success(function(data, status, header, config) {
+            }).then(function(res, status, header, config) {
+                var data = res.data
                 console.log(data);
                 if (data.status) {
                     $scope.data_ativar = data

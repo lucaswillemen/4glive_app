@@ -84,10 +84,11 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
 
             $http({
                 method: 'jsonp',
-                url: window.api + "api/cadastro.php?callback=JSON_CALLBACK",
+                url: window.api + "api/cadastro.php",
                 params: send,
                 paramSerializer: '$httpParamSerializerJQLike'
-            }).success(function(data, status, header, config) {
+            }).then(function(res, status, header, config) {
+                var data = res.data
                 console.log(data);
                 if (data.error) {
                     $scope.FormError = true
@@ -98,10 +99,10 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
                     $scope.overlay = true
                     $http({
                         method: 'jsonp',
-                        url: window.api + "api/ssh/cadastro.php?callback=JSON_CALLBACK&token=" + res.token + "&email=" + res.email
-                    }).success(function(res) {
+                        url: window.api + "api/ssh/cadastro.php?token=" + res.token + "&email=" + res.email
+                    }).then(function(r) {
+                        var res = r.data
                         $scope.overlay = false
-                        $scope.res
                         data.row.vencimento = res.vencimento
                         $('#datatable').DataTable().row.add(data.row).draw()
                         $scope.complete=true

@@ -1,25 +1,26 @@
 app.controller('login', function($scope, $http, $httpParamSerializerJQLike, $state, $rootScope) {
-if (localStorage.uid) {
-    $state.go("app.home")
-}else{
-    open()
-}
+    if (localStorage.uid) {
+        $state.go("app.home")
+    } else {
+        open()
+    }
     $scope.$on('$viewContentLoaded', function() {
         $('#form').formValidation({
-            
+
         }).on('success.form.fv', function(e) {
             // Prevent form submission
             e.preventDefault();
-	        var send = {
+            var send = {
                 data: $scope.data,
                 type: "email"
             }
             $http({
                 method: 'jsonp',
-                url: window.api + "api/login.php?callback=JSON_CALLBACK",
+                url: window.api + "api/login.php",
                 params: send,
                 paramSerializer: '$httpParamSerializerJQLike'
-            }).success(function(data) {
+            }).then(function(res) {
+                var data = res.data
                 if (data.data.length == 0) {
                     $scope.FormError = true
                     $scope.$apply()
@@ -34,19 +35,19 @@ if (localStorage.uid) {
                     $state.go("app.home")
                 }
             })
-		})
+        })
     });
     $("#face_login").click(function() {
         FB.login(function(response) {
-            $.ajax({
-            dataType: "jsonp",
-            callback: "callback",
-            url: window.api+"api/login.php",
-            data: "facebook_id="+response.authResponse.userID+"&type=facebook",
-            success: function(data) {
+            $http({
+                method: 'jsonp',
+                url: window.api + "api/login.php",
+                params: "facebook_id=" + response.authResponse.userID + "&type=facebook"
+            }).then(function(res) {
+                var data = res.data
                 console.log(data)
                 var res = data.data[0]
-                if( data.data.length === 0 ){
+                if (data.data.length === 0) {
                     $scope.FormError = true
                     $scope.$apply()
                 } else {
@@ -58,10 +59,9 @@ if (localStorage.uid) {
                     $scope.FormError = false
                     $scope.$apply()
                     $state.go("app.home")
-                    
+
                 }
-            }
-        });
+            })
         }, {
             scope: 'public_profile,email'
         });

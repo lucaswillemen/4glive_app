@@ -1,9 +1,6 @@
 app.controller('home', function($scope, $rootScope, $state, $http) {
-    $http({
-        method: 'jsonp',
-        url: window.api + "api/home.php?callback=JSON_CALLBACK&token="+localStorage.security_token,
-        
-    }).success(function(data) {
+    $http.jsonp(window.api + "api/home.php?token="+localStorage.security_token).then(function(res) {
+    	var data = res.data
         $scope.data = data.data[0]
         console.log($scope.data)
 	    open()

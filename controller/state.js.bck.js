@@ -1,7 +1,7 @@
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($routeProvider, $urlRouterProvider) {
 
-    $stateProvider
-        .state('app', {
+    $routeProvider
+        .when('app', {
             abstract: true,
             url: "/app",
             views: {
@@ -17,7 +17,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('login', {
+        .when('login', {
             url: "/login",
             views: {
                 "root": {
@@ -26,7 +26,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('register', {
+        .when('register', {
             url: "/register",
             views: {
                 "root": {
@@ -35,7 +35,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('app.home', {
+        .when('app.home', {
             url: "/home",
             views: {
                 "view": {
@@ -45,7 +45,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
         
-        .state('app.add', {
+        .when('app.add', {
             url: "/add",
             views: {
                 "view": {
@@ -54,7 +54,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('app.fatura', {
+        .when('app.fatura', {
             url: "/fatura",
             views: {
                 "view": {
@@ -63,7 +63,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('app.extrato', {
+        .when('app.extrato', {
             url: "/extrato",
             views: {
                 "view": {
@@ -72,7 +72,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('app.indicados', {
+        .when('app.indicados', {
             url: "/indicados",
             views: {
                 "view": {
@@ -81,7 +81,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('app.revenda', {
+        .when('app.revenda', {
             url: "/revenda",
             views: {
                 "view": {
