@@ -1,4 +1,4 @@
-if (location.pathname != "/android_asset/www/index.html") {
+if (location.pathname == "/android_asset/www/index.html") {
 // Platform: android
 // 7c5fcc5a5adfbf3fb8ceaf36fbdd4bd970bd9c20
 /*
