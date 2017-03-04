@@ -1,4 +1,4 @@
-window.api = ""
+window.api = "https://4glive.com.br/"
 window.version = "0.5"
 var app = angular.module('StartApp', ['ngMessages','ui.router','ngStorage','ui.utils.masks']);
 function open (){
