@@ -20,6 +20,7 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <allow-intent href="whatsapp:*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
