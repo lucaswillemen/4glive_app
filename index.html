@@ -49,15 +49,16 @@
     <script type="text/javascript">
         window.version = "000.1"
         if (window.location.href.split("/")[2] == "localhost") {
-            window.domain = "http://vectorgray.com.br/api/"
+            window.api = ""
             window.ws = "https://localhost:3000"
+
             window.config_base = {
                 "facebook_id": '836611273093285',
                 "analytcs_id": 'UA-90963924-1',
                 "facebook_pixel": '1087283108045883'
             }
         } else {
-            window.domain = "http://vectorgray.com.br/api/"
+            window.api = "https://4glive.com.br/app/"
             window.ws = "https://vpad.com.br:3000"
             window.config_base = {
                 "facebook_id": '409764189359025',
@@ -154,7 +155,7 @@ fbq('track', 'PageView');
     <script src="assets/js/moment.js"></script>
 
 
-<div id="modalAtualizar" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+<div id="modalAtualizar" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
