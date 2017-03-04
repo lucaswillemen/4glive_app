@@ -1,12 +1,11 @@
-window.api = ""
-window.version = "0.6"
+
 var app = angular.module('StartApp', ['ngMessages','ui.router','ngStorage','ui.utils.masks']);
 function open (){
 	$("body").removeClass("loading-overlay-showing")
 }
 //App principal
 app.controller('Main', function($scope, $rootScope, $state, $http) {
-	$http.jsonp(window.api + "api/version.php").then(function(res) {
+	$http.jsonp(window.api + "api/version.php", {jsonpCallbackParam: 'callback'}).then(function(res) {
         if (res.data.v != window.version) {
         	$("#modalAtualizar").modal("show")
         }
@@ -28,4 +27,18 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 	function(event, toState, toParams, fromState, fromParams){ 
 	    $("body").addClass("loading-overlay-showing")
 	})
+})
+
+app.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'https://4glive.com.br/**'
+  ]);
+
+  // The blacklist overrides the whitelist so the open redirect here is blocked.
+  $sceDelegateProvider.resourceUrlBlacklist([
+    'http://myapp.example.com/clickThru**'
+  ]);
 });

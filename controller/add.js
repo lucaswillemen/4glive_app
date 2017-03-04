@@ -2,8 +2,9 @@ app.controller('add', function($scope, $rootScope, $state, $http, $localStorage,
 
     $http({
         method: 'jsonp',
-        url: window.api + "api/pacotes.php?callback=JSON_CALLBACK"        
-    }).success(function(data) {
+        url: window.api + "api/pacotes.php"        
+    }).then(function(res) {
+        var data = res.data
         $scope.pacotes = data.data
         console.log($scope.data.valor)
         open()
