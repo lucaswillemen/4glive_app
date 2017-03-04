@@ -1,4 +1,4 @@
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $stateProvider
         .state('app', {
@@ -91,4 +91,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
         $urlRouterProvider.otherwise("/login")
+
+        $locationProvider.html5Mode(true);
 })
