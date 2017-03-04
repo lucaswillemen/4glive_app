@@ -9,7 +9,7 @@
     </author>
     <icon src="assets/images/4glive_logo_app.png" />
     <content src="index.html" />
-    <gap:plugin name="cordova-plugin-whitelist" spec="1" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="org.apache.cordova.core.inappbrowser" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
