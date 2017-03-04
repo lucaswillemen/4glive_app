@@ -224,3 +224,59 @@ c(b.nTable).hasClass("dt-responsive")||b.oInit.responsive||m.defaults.responsive
 (function(c){"function"===typeof define&&define.amd?define(["jquery","datatables.net-bs","datatables.net-responsive"],function(a){return c(a,window,document)}):"object"===typeof exports?module.exports=function(a,b){a||(a=window);if(!b||!b.fn.dataTable)b=require("datatables.net-bs")(a,b).$;b.fn.dataTable.Responsive||require("datatables.net-responsive")(a,b);return c(b,a,a.document)}:c(jQuery,window,document)})(function(c){var a=c.fn.dataTable,b=a.Responsive.display,g=b.modal,d=c('<div class="modal fade dtr-bs-modal" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"/></div></div></div>');
 b.modal=function(a){return function(b,e,f){c.fn.modal?e||(a&&a.header&&d.find("div.modal-header").empty().append('<h4 class="modal-title">'+a.header(b)+"</h4>"),d.find("div.modal-body").empty().append(f()),d.appendTo("body").modal()):g(b,e,f)}};return a.Responsive});
 
+// UMD
+(function( factory ) {
+    "use strict";
+ 
+    if ( typeof define === 'function' && define.amd ) {
+        // AMD
+        define( ['jquery'], function ( $ ) {
+            return factory( $, window, document );
+        } );
+    }
+    else if ( typeof exports === 'object' ) {
+        // CommonJS
+        module.exports = function (root, $) {
+            if ( ! root ) {
+                root = window;
+            }
+ 
+            if ( ! $ ) {
+                $ = typeof window !== 'undefined' ?
+                    require('jquery') :
+                    require('jquery')( root );
+            }
+ 
+            return factory( $, root, root.document );
+        };
+    }
+    else {
+        // Browser
+        factory( jQuery, window, document );
+    }
+}
+(function( $, window, document ) {
+ 
+ 
+$.fn.dataTable.render.moment = function ( from, to, locale ) {
+    // Argument shifting
+    if ( arguments.length === 1 ) {
+        locale = 'en';
+        to = from;
+        from = 'YYYY-MM-DD';
+    }
+    else if ( arguments.length === 2 ) {
+        locale = 'en';
+    }
+ 
+    return function ( d, type, row ) {
+        var m = window.moment( d, from, locale, true );
+ 
+        // Order and type get a number value from Moment, everything else
+        // sees the rendered value
+        return m.format( type === 'sort' || type === 'type' ? 'x' : to );
+    };
+};
+ 
+ 
+}));

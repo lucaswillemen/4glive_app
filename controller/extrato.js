@@ -1,5 +1,5 @@
 app.controller('extrato', function($scope, $rootScope, $state, $http) {
-
+    open()
     $("#datatable").DataTable({
         responsive: true,
         "autoWidth": false,
@@ -27,6 +27,10 @@ app.controller('extrato', function($scope, $rootScope, $state, $http) {
                 data: "des"
             }
         ],
+        "columnDefs": [{
+            targets: 0,
+            render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'DD/MM/YYYY HH:mm')
+        }]
     })
     $scope.$on('$viewContentLoaded', function() {
         $('#form').formValidation({

@@ -1,5 +1,5 @@
 app.controller('fatura', function($scope, $rootScope, $state, $http) {
-
+    open()
     $("#datatable").DataTable({
         responsive: true,
         "autoWidth": false,

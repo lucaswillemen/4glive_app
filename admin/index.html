@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="fixed">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4G Live - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="icon" href="../../assets/images/favicon.png">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.css" />
+    <link rel="stylesheet" href="../assets/css/datepicker.css" />
+    <link rel="stylesheet" href="../assets/css/datatable.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/select2.css" />
+    <script src="../assets/js/modernizr.js"></script>
+
+    <style type="text/css">
+    body{padding-right: 0px !important;}
+        a {
+            cursor: pointer
+        }
+        
+        .has-feedback .form-control-feedback {
+            right: 15px;
+            top: 10px;
+        }
+        
+        .has-feedback label~.form-control-feedback {
+            top: 36px;
+            right: 0px;
+        }
+        .col-md-12 label~.form-control-feedback, .col-md-6 label~.form-control-feedback {
+            top: 36px;
+            right: 15px !important;
+        }
+    </style>
+    <!--Angular -->
+    <script src="../angular/angular.min.js"></script>
+    <script src="../angular/angular-messages.js"></script>
+    <script src="../angular/angular-router.js"></script>
+    <script src="../angular/angular-mask.js"></script>
+    <script src="../angular/angular-storage.js"></script>
+
+    <!--Controller-->
+    <script src="controller/app.js"></script>
+    <script src="controller/state.js"></script>
+    <script src="controller/menu.js"></script>
+
+    <script src="controller/register.js"></script>
+    <script src="controller/login.js"></script>
+    <script src="controller/cliente.js"></script>
+    <script src="controller/revendedor.js"></script>
+    <script src="controller/servers.js"></script>
+    <script src="controller/home.js"></script>
+    <script src="controller/caixa.js"></script>
+    <script src="controller/pacote.js"></script>
+
+</head>
+
+<body ng-app="StartApp" ng-controller="Main">
+        <ng-view ui-view="header"></ng-view>
+        <ng-view ui-view="menu"></ng-view>
+        <ng-view ui-view="root"></ng-view>
+
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/validator.js"></script>
+    <script src="../assets/js/datepicker.js"></script>
+    <script src="../assets/js/datatable.js"></script>
+    <script src="../assets/js/select2.js"></script>
+    <script src="../assets/js/moment.js"></script>
+
+</body>
+</html>

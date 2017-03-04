@@ -6,6 +6,7 @@ app.controller('home', function($scope, $rootScope, $state, $http) {
     }).success(function(data) {
         $scope.data = data.data[0]
         console.log($scope.data)
+	    open()
     })
     $scope.today = new Date().toISOString().substring(0, 10)
 });

@@ -1,4 +1,5 @@
 app.controller('register', function($scope, $http, $httpParamSerializerJQLike, $state, $rootScope) {
+    open()
     $scope.data = {}
     $scope.$on('$viewContentLoaded', function() {
         $('#form').formValidation({

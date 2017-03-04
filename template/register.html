@@ -11,7 +11,7 @@
     <section class="body-sign">
         <div class="center-sign">
             <a href="http://preview.oklerthemes.com/" class="logo pull-left" style="padding-top: 24px;">
-                <img src="assets/images/4glive_logo_negative.png" height="28"/>
+                <img src="assets/images/4glive_logo_negative.png" height="36" alt="Porto Admin" />
             </a>
 
             <div class="panel panel-sign">
@@ -31,7 +31,7 @@
 
                         <div class="form-group mb-lg">
                             <label>Celular</label>
-                            <input name="celular" ng-model="data.telefone" type="text" class="form-control" required />
+                            <input name="celular" ng-model="data.telefone" type="text" class="form-control" required ui-br-phone-number/>
                         </div>
 
                         <div class="form-group mb-lg">
@@ -63,8 +63,14 @@
                             </div>
                         </div>
 
-                        <br>
-                       
+                        <span class="mt-lg mb-lg line-thru text-center text-uppercase">
+								<span>Ou</span>
+                        </span>
+
+                        <div class="mb-xs text-center">
+                            <a class="btn btn-facebook mb-md ml-xs mr-xs" id="face_login">Conectar com <i class="fa fa-facebook"></i></a>
+                        </div>
+
                         <p class="text-center">Já possui uma conta? <a ui-sref="login">Acesse agora!</a></p>
 
                     </form>

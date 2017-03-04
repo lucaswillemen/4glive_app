@@ -8,6 +8,7 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
         $scope.data = data.data[0]
         $scope.revenda_link = "https://4glive.com.br/app/#/indicador/"+$scope.data.email
         console.log($scope.data)
+        open()
     })
 
     //Load pacotes

@@ -55,18 +55,18 @@
                     </div>
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Nome:</label>
-                        <input class="form-control" name="nome" ng-model="data.nome" required>
+                        <input class="form-control" name="data[nome]" ng-model="data.nome" id="tx_nome" required>
                     </div>
 
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Email:</label>
-                        <input type="email" class="form-control" name="email" ng-model="data.email" required>
+                        <input class="form-control" name="data[email]" ng-model="data.email" id="txt_host" required>
                     </div>
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Celular:</label>
-                        <input class="form-control" name="celular" ng-model="data.telefone" required >
+                        <input class="form-control" name="celular" ng-model="data.telefone" id="txt_user" required ui-br-phone-number>
                     </div>
-                </div>
+                </div>                
                 <div class="modal-footer" ng-show="overlay">
                     <h3  class="text-center">Criando conta</h3>
                     <div class="col-sm-4">
@@ -85,7 +85,7 @@
                 </div>
             </form>
             <div class="modal-body" ng-show="complete">
-                <div class="panel panel-featured-left panel-featured-quartenary" style="margin-bottom: 0px;">
+                <div class="panel panel-featured-left panel-featured-quartenary">
                     <div class="panel-body">
                         <div class="widget-summary">
                             <div class="widget-summary-col widget-summary-col-icon">

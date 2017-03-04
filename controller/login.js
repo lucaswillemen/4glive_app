@@ -1,6 +1,8 @@
 app.controller('login', function($scope, $http, $httpParamSerializerJQLike, $state, $rootScope) {
 if (localStorage.uid) {
     $state.go("app.home")
+}else{
+    open()
 }
     $scope.$on('$viewContentLoaded', function() {
         $('#form').formValidation({

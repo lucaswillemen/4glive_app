@@ -1,4 +1,5 @@
 app.controller('indicados', function($scope, $rootScope, $state, $http) {
+    open()
     console.log(localStorage.uid)
     $("#datatable").DataTable({
         responsive: true,
@@ -27,6 +28,13 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
                 data: "vencimento"
             }
         ],
+        "columnDefs": [{
+            targets: 4,
+            render: $.fn.dataTable.render.moment('YYYY-MM-DD', 'DD/MM/YYYY')
+        },{
+            targets: 3,
+            render: $.fn.dataTable.render.moment('YYYY-MM-DD HH:mm:ss', 'DD/MM/YYYY HH:mm')
+        }],
     })
     $scope.$on('$viewContentLoaded', function() {
         $("#btnNovo").click(function() {
@@ -48,9 +56,24 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
             row: {
                 valid: 'has-success',
                 invalid: 'has-error'
+            },
+            fields: {
+                'celular': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Informe o celular'
+                        },
+
+                        regexp: {
+                            regexp: /^\([1-9]{2}\) [2-9][0-9]{3,4}\-[0-9]{4}$/,
+                            message: 'Informe um número de celular válido'
+                        }
+                    }
+                }
             }
         }).on('success.form.fv', function(e) {
             e.preventDefault();
+            $scope.data.email = $scope.data.email.toLowerCase()
 
             var send = {
                 data: $scope.data,

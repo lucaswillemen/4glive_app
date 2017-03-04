@@ -1,0 +1,40 @@
+<div class="inner-wrapper">
+    <section role="main" class="content-body">
+        <header class="page-header">
+            <h2>Caixa</h2>
+            <div class="right-wrapper pull-right">
+                <ol class="breadcrumbs">
+                    <li>
+                        <a ui-sref="app.home">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </li>
+                    <li><span>Caixa</span></li>
+                </ol>
+                <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+            </div>
+        </header>
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Fluxo do Caixa</h2>
+                <div class="panel-actions">
+                    <button class="btn btn-primary" data-toggle='modal' data-target='#modalCadastrar'>Adicionar</button>
+                    <button class="btn btn-danger" data-toggle='modal' data-target='#modalCadastrar'>Remover</button>
+                </div>
+            </header>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped mb-none" id="datatable" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Valor</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </section>
+    </section>
+</div>
+
+

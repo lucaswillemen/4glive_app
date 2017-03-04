@@ -6,6 +6,7 @@ app.controller('add', function($scope, $rootScope, $state, $http, $localStorage,
     }).success(function(data) {
         $scope.pacotes = data.data
         console.log($scope.data.valor)
+        open()
     })
     $scope.data = {}
 
