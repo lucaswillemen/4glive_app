@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="modal-footer" ng-show="complete">
-                <a type="button" class="btn btn-primary" href="whatsapp://send?text=Dados de conexão - Email: {{res.user_con}} \n Senha: {{res.senha_con}}"><i class="fa fa-whatsapp"></i> Enviar no WhatsApp</a>
+                <button type="button" class="btn btn-primary" ng-click="whatsapp_open()"><i class="fa fa-whatsapp"></i> Enviar no WhatsApp</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>

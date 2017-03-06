@@ -103,6 +103,9 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
                         $scope.complete=true
                         $scope.res=res
                         //$scope.$apply()
+                        $scope.whatsapp_open = function(){
+                            window.open("whatsapp://send?text=Dados de conexão %0AEmail: "+res.user_con+" %0ASenha: "+res.senha_con, "_system")
+                        }
                     })
                 }
             })
