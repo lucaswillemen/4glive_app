@@ -49,7 +49,7 @@
                 <h4 class="modal-title">Cadastro de novo cliente</h4>
             </div>
             <form method="GET" action="" id="form" onsubmit="return false" ng-hide="complete">
-                <div class="modal-body">
+                <div class="modal-body" ng-hide="overlay">
                     <div class="alert alert-danger" ng-show="FormError">
                         <strong>Ops!</strong> Email já cadastrado.
                     </div>
