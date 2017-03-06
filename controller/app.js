@@ -5,6 +5,7 @@ function open_overlay (){
 }
 //App principal
 app.controller('Main', function($scope, $rootScope, $state, $http) {
+	$rootScope.mobile = window.mobile
 	$http.jsonp(window.api + "api/version.php", {jsonpCallbackParam: 'callback'}).then(function(res) {
         if (res.data.v != window.version) {
         	$("#modalAtualizar").modal("show")
@@ -31,14 +32,9 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 
 app.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
-    // Allow same origin resource loads.
     'self',
-    // Allow loading from our assets domain.  Notice the difference between * and **.
     'https://4glive.com.br/**'
   ]);
-
-  // The blacklist overrides the whitelist so the open redirect here is blocked.
   $sceDelegateProvider.resourceUrlBlacklist([
-    
   ]);
 });
