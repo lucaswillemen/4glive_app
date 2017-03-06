@@ -13,11 +13,6 @@ app.controller('register', function($scope, $http, $httpParamSerializerJQLike, $
                     validators: {
                         notEmpty: {
                             message: 'Informe o celular'
-                        },
-
-                        regexp: {
-                            regexp: /^\([1-9]{2}\) [2-9][0-9]{3,4}\-[0-9]{4}$/,
-                            message: 'Informe um número de celular válido'
                         }
                     }
                 }
@@ -25,23 +20,23 @@ app.controller('register', function($scope, $http, $httpParamSerializerJQLike, $
         }).on('success.form.fv', function(e) {
             // Prevent form submission
             e.preventDefault();
-	        var send = {
-	            data: $scope.data,
-	            action: "create"
-	        }
-	        $http({
-	            method: 'jsonp',
-	            url: window.api + "api/cadastro.php?callback=JSON_CALLBACK",
-	            params: send,
-	            paramSerializer: '$httpParamSerializerJQLike'
-	        }).success(function(data, status, header, config) {
-	            console.log(data);
-	            if (data.error) {
-	                $scope.FormError = true
-	            }
-	            if (data.row) {
+            var send = {
+                data: $scope.data,
+                action: "create"
+            }
+            $http({
+                method: 'jsonp',
+                url: window.api + "api/cadastro.php?callback=JSON_CALLBACK",
+                params: send,
+                paramSerializer: '$httpParamSerializerJQLike'
+            }).success(function(data, status, header, config) {
+                console.log(data);
+                if (data.error) {
+                    $scope.FormError = true
+                }
+                if (data.row) {
                     res = data.row
-	                $scope.FormError = false
+                    $scope.FormError = false
                     localStorage.uid = res.id
                     localStorage.nome = res.nome
                     $rootScope.nome = localStorage.nome
@@ -54,9 +49,9 @@ app.controller('register', function($scope, $http, $httpParamSerializerJQLike, $
                         $state.go("app.home")
                         $scope.$apply()
                     })
-	            }
-	        })
-		})
+                }
+            })
+        })
         $('.datepicker').on('dp.change dp.show', function(e) {
             $('#meetingForm').formValidation('revalidateField', 'meeting');
         });

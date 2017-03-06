@@ -31,7 +31,7 @@
 
                         <div class="form-group mb-lg">
                             <label>Celular</label>
-                            <input name="celular" ng-model="data.telefone" type="text" class="form-control" required ui-br-phone-number/>
+                            <input name="celular" ng-model="data.telefone" type="text" class="form-control" required/>
                         </div>
 
                         <div class="form-group mb-lg">
@@ -55,24 +55,18 @@
                                     <div class="bounce3"></div>
                                 </div>
                             </div>
-
                             <div class="col-sm-4 text-right">
-
                                 <button ng-hide="overlay" type="submit" class="btn btn-primary hidden-xs">Cadastrar</button>
                                 <button ng-hide="overlay" type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Cadastrar</button>
                             </div>
                         </div>
-
                         <span class="mt-lg mb-lg line-thru text-center text-uppercase">
 								<span>Ou</span>
                         </span>
-
-                        <div class="mb-xs text-center">
+                        <div class="mb-xs text-center" ng-show="mobile">
                             <a class="btn btn-facebook mb-md ml-xs mr-xs" id="face_login">Conectar com <i class="fa fa-facebook"></i></a>
                         </div>
-
                         <p class="text-center">Já possui uma conta? <a ui-sref="login">Acesse agora!</a></p>
-
                     </form>
                 </div>
             </div>

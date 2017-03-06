@@ -62,11 +62,6 @@ app.controller('indicados', function($scope, $rootScope, $state, $http) {
                     validators: {
                         notEmpty: {
                             message: 'Informe o celular'
-                        },
-
-                        regexp: {
-                            regexp: /^\([1-9]{2}\) [2-9][0-9]{3,4}\-[0-9]{4}$/,
-                            message: 'Informe um número de celular válido'
                         }
                     }
                 }
