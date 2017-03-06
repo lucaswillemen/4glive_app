@@ -60,7 +60,7 @@
 
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Email:</label>
-                        <input class="form-control" name="data[email]" ng-model="data.email" id="txt_host" required>
+                        <input type="email" class="form-control" name="data[email]" ng-model="data.email" id="txt_host" required>
                     </div>
                     <div class="form-group">
                         <label for="txtNomeEmpresa">Celular:</label>
@@ -88,7 +88,7 @@
                 <div class="panel panel-featured-left panel-featured-quartenary">
                     <div class="panel-body">
                         <div class="widget-summary">
-                            <div class="widget-summary-col widget-summary-col-icon">
+                            <div class="widget-summary-col widget-summary-col-icon hidden-xs">
                                 <div class="summary-icon bg-quartenary">
                                     <i class="fa fa-user"></i>
                                 </div>
@@ -107,6 +107,7 @@
                 </div>
             </div>
             <div class="modal-footer" ng-show="complete">
+                <a type="button" class="btn btn-primary" href="whatsapp://send?text=Dados de conexão - Email: {{res.user_con}} \n Senha: {{res.senha_con}}"><i class="fa fa-whatsapp"></i> Enviar no WhatsApp</a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
