@@ -7,7 +7,7 @@ app.controller('add', function($scope, $rootScope, $state, $http, $localStorage,
         var data = res.data
         $scope.pacotes = data.data
         console.log($scope.data.valor)
-        open()
+        open_overlay()
     })
     $scope.data = {}
 

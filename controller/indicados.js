@@ -1,5 +1,5 @@
 app.controller('indicados', function($scope, $rootScope, $state, $http) {
-    open()
+    open_overlay()
     console.log(localStorage.uid)
     $("#datatable").DataTable({
         responsive: true,

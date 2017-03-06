@@ -4,7 +4,7 @@ app.controller('revenda', function($scope, $rootScope, $state, $http) {
     $http.jsonp(window.api + "api/home.php?token="+localStorage.security_token).then(function(res) {
         $scope.data = res.data.data[0]
         $scope.revenda_link = "https://4glive.com.br/app/#/indicador/"+$scope.data.email
-        open()
+        open_overlay()
     })
 
     //Load pacotes

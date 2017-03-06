@@ -1,5 +1,5 @@
 app.controller('register', function($scope, $http, $httpParamSerializerJQLike, $state, $rootScope) {
-    open()
+    open_overlay()
     $scope.data = {}
     $scope.$on('$viewContentLoaded', function() {
         $('#form').formValidation({
@@ -63,21 +63,20 @@ app.controller('register', function($scope, $http, $httpParamSerializerJQLike, $
     });
     $("#face_login").click(function() {
         FB.login(function(response) {
-            console.log(response)
-            FB.api('/me', {fields: 'name,email'}, function(response) {
-              console.log(response);
-              $scope.data.nome = response.name
-              $scope.data.email = response.email
-              $scope.data.facebook_id = response.id
-              $scope.data.facebook_loaded = true
-              $scope.$apply()
+            if (response.authResponse) {
+                FB.api('/me', {fields: 'name,email'}, function(response) {
+                  $scope.data.nome = response.name
+                  $scope.data.email = response.email
+                  $scope.data.facebook_id = response.id
+                  $scope.data.facebook_loaded = true
+                  $scope.$apply()
 
-            });
-            FB.api('/me/picture', function(response) {
-              console.log(response);
-              $scope.data.facebook_picture = response.data.url
+                });
+                FB.api('/me/picture', function(response) {
+                  $scope.data.facebook_picture = response.data.url
 
-            });
+                })
+            }
         }, {
             scope: 'public_profile,email'
         });

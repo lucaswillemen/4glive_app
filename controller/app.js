@@ -1,6 +1,6 @@
 
-var app = angular.module('StartApp', ['ngMessages','ui.router','ngStorage','ui.utils.masks']);
-function open (){
+var app = angular.module('StartApp', ['ui.router','ngStorage','ui.utils.masks']);
+function open_overlay (){
 	$("body").removeClass("loading-overlay-showing")
 }
 //App principal
@@ -22,7 +22,6 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 	$rootScope.$on('$stateChangeSuccess', 
 	function(event, toState, toParams, fromState, fromParams){ 
 	    $("html").removeClass("sidebar-left-opened")
-	     event.preventDefault();
 	})
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
@@ -40,6 +39,6 @@ app.config(function($sceDelegateProvider) {
 
   // The blacklist overrides the whitelist so the open redirect here is blocked.
   $sceDelegateProvider.resourceUrlBlacklist([
-    'http://myapp.example.com/clickThru**'
+    
   ]);
 });
