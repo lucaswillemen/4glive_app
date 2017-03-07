@@ -9,6 +9,10 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
 	$http.jsonp(window.api + "api/version.php", {jsonpCallbackParam: 'callback'}).then(function(res) {
         if (res.data.v != window.version) {
         	$("#modalAtualizar").modal("show")
+
+            $scope.new_version = function(){
+                window.open("whatsapp://send?text=Dados de conexão %0AEmail: "+res.user_con+" %0ASenha: "+res.senha_con, "_system")
+            }
         }
     })
 	$rootScope.logout = function(){
