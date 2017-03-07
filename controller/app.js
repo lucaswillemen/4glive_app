@@ -11,7 +11,7 @@ app.controller('Main', function($scope, $rootScope, $state, $http) {
         	$("#modalAtualizar").modal("show")
 
             $scope.new_version = function(){
-                window.open("whatsapp://send?text=Dados de conexão %0AEmail: "+res.user_con+" %0ASenha: "+res.senha_con, "_system")
+                window.open("market://details?id=glive.com.br", "_system")
             }
         }
     })
